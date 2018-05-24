@@ -4,22 +4,22 @@
 {% block subtitle %} {{ course.name }} {% endblock %}
 
 {% block css %}
-<link rel="stylesheet" media="all" type="text/css" href="{{ URL_ROOT }}/static/yaksh/css/course.css" />
+<link rel="stylesheet" media="all" type="text/css" href="/static/yaksh/css/course.css" />
 {% endblock %}
 
 {% block content %}
 <center><h3>Add Teachers for this course</h3><br></center>
 <center><h3>Search teacher with username, firstname, lastname, email</h3><br></center>
 <div align="center">
-		<form action="{{ URL_ROOT }}/exam/manage/searchteacher/{{ course.id }}/" method="post">
+		<form action="/exam/manage/searchteacher/{{ course.id }}/" method="post">
 		{% csrf_token %}
 		Search Teacher: <input type="text" name="uname" style="height: 25px; padding: 0px"><br><br>
 		<center><button class="btn" type="submit">Search</button>
-		<button class="btn" type="button" name="button" onClick='location.replace("{{URL_ROOT}}/exam/manage/courses");'>Cancel</button> </center></form>
+		<button class="btn" type="button" name="button" onClick='location.replace("/exam/manage/courses");'>Cancel</button> </center></form>
 </div>
 <br><br>
 
-<form action="{{ URL_ROOT }}/exam/manage/addteacher/{{ course.id }}/" method="post">
+<form action="/exam/manage/addteacher/{{ course.id }}/" method="post">
 {% csrf_token %}
 {% if success == True %}
 	{% if teachers|length == 0 %}
