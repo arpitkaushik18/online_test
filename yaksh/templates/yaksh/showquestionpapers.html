@@ -4,7 +4,7 @@
 {% block subtitle %}List of Question Papers {% endblock %}
 
 {% block script %}
-<script src="{{ URL_ROOT }}/static/yaksh/js/show_question.js"></script>
+<script src="/static/yaksh/js/show_question.js"></script>
 {% endblock %}
 
 {% block manage %}
@@ -12,7 +12,7 @@
 <form name=frm action="" method="post">
 {% csrf_token %}
 {% for i in papers %}
-<input type="checkbox" name="papers" value="{{ i.id }}">&nbsp;&nbsp;<a href="{{URL_ROOT}}/exam/manage/showquestionpapers/{{ i.id }}">{{ i.quiz.description }}</a><br>
+<input type="checkbox" name="papers" value="{{ i.id }}">&nbsp;&nbsp;<a href="/exam/manage/showquestionpapers/{{ i.id }}">{{ i.quiz.description }}</a><br>
 {% endfor %}
 <br>
 <button class="btn" type="submit" onClick="return confirm_delete(frm);" name='delete' value='delete'>Delete Selected</button>

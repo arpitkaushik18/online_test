@@ -9,7 +9,7 @@
     {% endif %}
     {% if 'Enrolled Courses' not in title%}
         <div class="row well">
-            <form action="{{ URL_ROOT }}/exam/quizzes/" method="post" id="custom-search-form" class="form-search form-horizontal">
+            <form action="/exam/quizzes/" method="post" id="custom-search-form" class="form-search form-horizontal">
                 {% csrf_token %}
                 <div class="col-md-12">
                     <div class="input-group">
@@ -17,7 +17,7 @@
                         <input type="text" name="course_code" class="form-control" placeholder="Course Code">
                         <span class="input-group-btn">
                             <button class="btn btn-default" type="submit">Search</button>
-                            <button class="btn btn-default" type="button" name="button" onClick='location.replace("{{URL_ROOT}}/exam/quizzes/");'>Cancel</button>
+                            <button class="btn btn-default" type="button" name="button" onClick='location.replace("/exam/quizzes/");'>Cancel</button>
                         </span>
                     </div>
                 </div>
@@ -33,7 +33,7 @@ No Courses to display
         <div class="row">
             <div class="col-md-4">
                 <h4><b>
-                    <a href="{{URL_ROOT}}/exam/course_modules/{{course.id}}">
+                    <a href="/exam/course_modules/{{course.id}}">
                     {{ course.name }} by {{ course.creator.get_full_name }}
                     </a>
                 </b></h4>
@@ -46,9 +46,9 @@ No Courses to display
                     {% if course.active %}
                         {% if course.is_active_enrollment %}
                             {% if course.is_self_enroll %}
-                                <a class="btn btn-success" href="{{ URL_ROOT }}/exam/self_enroll/{{ course.id }}">Enroll</a>
+                                <a class="btn btn-success" href="/exam/self_enroll/{{ course.id }}">Enroll</a>
                             {% else %}
-                                <a class="btn btn-success" href="{{ URL_ROOT }}/exam/enroll_request/{{ course.id }}">Enroll</a>
+                                <a class="btn btn-success" href="/exam/enroll_request/{{ course.id }}">Enroll</a>
                             {% endif %}
                         {% else %}
                             <span class="label label-danger" style="font-size: 15px">

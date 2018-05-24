@@ -6,8 +6,8 @@
 {% block content %}
 
 {% block script %}
-<script src= "{{ URL_ROOT }}/static/yaksh/js/edit_question.js"></script>
-<script src="{{ URL_ROOT }}/static/yaksh/js/mathjax/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script src= "/static/yaksh/js/edit_question.js"></script>
+<script src="/static/yaksh/js/mathjax/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 
 {% endblock %}
 
@@ -27,7 +27,7 @@ Last login: {{ data.user.last_login }}
 </p>
 
 {% if data.papers %}
-<p><a href="{{URL_ROOT}}/exam/manage/gradeuser/{{data.papers.0.question_paper.quiz.id}}/{{ data.user.id }}/{{course_id}}/">
+<p><a href="/exam/manage/gradeuser/{{data.papers.0.question_paper.quiz.id}}/{{ data.user.id }}/{{course_id}}/">
     Grade/correct paper</a>
 </p>
 
@@ -254,15 +254,15 @@ User IP address: {{ paper.user_ip }}
 <hr />
 
 {% with data.papers.0 as paper %}
-<a href="{{URL_ROOT}}/exam/manage/gradeuser/{{paper.question_paper.quiz.id}}/{{ data.user.id }}/{{course_id}}/">Grade/correct paper</a>
+<a href="/exam/manage/gradeuser/{{paper.question_paper.quiz.id}}/{{ data.user.id }}/{{course_id}}/">Grade/correct paper</a>
 {% endwith %}
 <br />
 
 {% if data.papers.count > 1 %}
-<a href="{{URL_ROOT}}/exam/manage/monitor/">Monitor quiz</a>
+<a href="/exam/manage/monitor/">Monitor quiz</a>
 {% else %}
 {% with data.papers.0 as paper %}
-<a href="{{URL_ROOT}}/exam/manage/monitor/{{paper.question_paper.id}}/">Monitor quiz</a>
+<a href="/exam/manage/monitor/{{paper.question_paper.id}}/">Monitor quiz</a>
 {% endwith %}
 {% endif %}
 

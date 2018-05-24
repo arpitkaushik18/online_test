@@ -3,10 +3,10 @@
 
 {% block pagetitle %} {{ paper.question_paper.quiz.description }} {% endblock pagetitle %}
 {% block css %}
-<link rel="stylesheet" href="{{ URL_ROOT }}/static/yaksh/css/dashboard.css" type="text/css" />
-<link rel="stylesheet" href="{{ URL_ROOT }}/static/yaksh/css/question.css" type="text/css" />
-<link rel="stylesheet" href="{{ URL_ROOT }}/static/yaksh/css/codemirror/lib/codemirror.css" type="text/css" />
-<link rel="stylesheet" href="{{ URL_ROOT }}/static/yaksh/css/exam.css" type="text/css" />
+<link rel="stylesheet" href="/static/yaksh/css/dashboard.css" type="text/css" />
+<link rel="stylesheet" href="/static/yaksh/css/question.css" type="text/css" />
+<link rel="stylesheet" href="/static/yaksh/css/codemirror/lib/codemirror.css" type="text/css" />
+<link rel="stylesheet" href="/static/yaksh/css/exam.css" type="text/css" />
 <style>
     .CodeMirror{
         border-style: groove;
@@ -19,13 +19,13 @@
 {% endblock %}
 
 {% block script %}
-<script src="{{ URL_ROOT }}/static/yaksh/js/requesthandler.js"></script>
-<script src="{{ URL_ROOT }}/static/yaksh/js/codemirror/lib/codemirror.js"></script>
-<script src="{{ URL_ROOT }}/static/yaksh/js/codemirror/mode/python/python.js"></script>
-<script src="{{ URL_ROOT }}/static/yaksh/js/codemirror/mode/clike/clike.js"></script>
-<script src="{{ URL_ROOT }}/static/yaksh/js/codemirror/mode/shell/shell.js"></script>
-<script src="{{ URL_ROOT }}/static/yaksh/js/mathjax/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-<script src="{{ URL_ROOT }}/static/yaksh/js/jquery-sortable.js"></script>
+<script src="/static/yaksh/js/requesthandler.js"></script>
+<script src="/static/yaksh/js/codemirror/lib/codemirror.js"></script>
+<script src="/static/yaksh/js/codemirror/mode/python/python.js"></script>
+<script src="/static/yaksh/js/codemirror/mode/clike/clike.js"></script>
+<script src="/static/yaksh/js/codemirror/mode/shell/shell.js"></script>
+<script src="/static/yaksh/js/mathjax/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script src="/static/yaksh/js/jquery-sortable.js"></script>
 <script>
 init_val = '{{ last_attempt|escape_quotes|safe }}';
 lang = "{{ question.language }}"
@@ -122,7 +122,7 @@ question_type = "{{ question.type }}"
             <span class="glyphicon glyphicon-edit" data-toggle="tooltip" title="Currently on">
             </span>
         {% endif %}
-        <b><u><a href="{{URL_ROOT}}/exam/quizzes/view_module/{{learning_module.id}}/{{course.id}}">{{learning_module.name}}</u></b>
+        <b><u><a href="/exam/quizzes/view_module/{{learning_module.id}}/{{course.id}}">{{learning_module.name}}</u></b>
         </a>
         <ul class="list">
         {% for unit in learning_module.get_learning_units %}
@@ -135,11 +135,11 @@ question_type = "{{ question.type }}"
             </span>
         {% endif %}
         {% if unit.type == "quiz" %}
-            <a href="{{ URL_ROOT }}/exam/start/{{unit.quiz.questionpaper_set.get.id}}/{{learning_module.id}}/{{course.id}}">
+            <a href="/exam/start/{{unit.quiz.questionpaper_set.get.id}}/{{learning_module.id}}/{{course.id}}">
                 {{ unit.quiz.description }}
             </a>
         {% else %}
-            <a href="{{ URL_ROOT }}/exam/show_lesson/{{unit.lesson.id}}/{{learning_module.id}}/{{course.id}}">
+            <a href="/exam/show_lesson/{{unit.lesson.id}}/{{learning_module.id}}/{{course.id}}">
                 {{ unit.lesson.name }}
             </a>
         {% endif %}
@@ -156,7 +156,7 @@ question_type = "{{ question.type }}"
 {% endblock %}
 
 {% block main %}
-        <form id="code" action="{{URL_ROOT}}/exam/{{ question.id }}/check/{{ paper.attempt_number }}/{{ module.id }}/{{ paper.question_paper.id }}/{{course.id}}/" method="post" enctype="multipart/form-data">
+        <form id="code" action="/exam/{{ question.id }}/check/{{ paper.attempt_number }}/{{ module.id }}/{{ paper.question_paper.id }}/{{course.id}}/" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <input type=hidden name="question_id" id="question_id" value={{ question.id }}></input>
             <div class="panel panel-default">
@@ -308,15 +308,15 @@ question_type = "{{ question.type }}"
          {% endif %}
          {% if quiz.is_exercise %}
          {% if can_skip %}
-             <button id="skip_ex" class="btn btn-primary"  onclick="call_skip('{{ URL_ROOT }}/exam/{{ question.id }}/skip/{{ paper.attempt_number }}/{{ module.id }}/{{ paper.question_paper.id }}/{{course.id}}/')" name="skip"> Next <span class="glyphicon glyphicon-arrow-right"></span></button>
+             <button id="skip_ex" class="btn btn-primary"  onclick="call_skip('/exam/{{ question.id }}/skip/{{ paper.attempt_number }}/{{ module.id }}/{{ paper.question_paper.id }}/{{course.id}}/')" name="skip"> Next <span class="glyphicon glyphicon-arrow-right"></span></button>
          {% else %}
-             <button id="skip_ex" class="btn btn-primary"  onclick="call_skip('{{ URL_ROOT }}/exam/{{ question.id }}/skip/{{ paper.attempt_number }}/{{ module.id }}/{{ paper.question_paper.id }}/{{course.id}}/')" name="skip" style="visibility:hidden"> Next <span class="glyphicon glyphicon-arrow-right"></span></button>
+             <button id="skip_ex" class="btn btn-primary"  onclick="call_skip('/exam/{{ question.id }}/skip/{{ paper.attempt_number }}/{{ module.id }}/{{ paper.question_paper.id }}/{{course.id}}/')" name="skip" style="visibility:hidden"> Next <span class="glyphicon glyphicon-arrow-right"></span></button>
         {% endif %}
         {% endif %}
 
          {% if paper.question_paper.quiz.allow_skip and not paper.get_questions_unanswered|length_is:"1" %}
          {% if question in paper.get_questions_unanswered %}
-         <button class="btn btn-primary"  onclick="call_skip('{{ URL_ROOT }}/exam/{{ question.id }}/skip/{{ paper.attempt_number }}/{{ module.id }}/{{ paper.question_paper.id }}/{{course.id}}/')" name="skip" id="skip">Attempt Later <span class="glyphicon glyphicon-arrow-right"></span></button>
+         <button class="btn btn-primary"  onclick="call_skip('/exam/{{ question.id }}/skip/{{ paper.attempt_number }}/{{ module.id }}/{{ paper.question_paper.id }}/{{course.id}}/')" name="skip" id="skip">Attempt Later <span class="glyphicon glyphicon-arrow-right"></span></button>
          {% endif %}
          {% endif %}
        </div>

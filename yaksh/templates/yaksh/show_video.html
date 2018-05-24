@@ -18,7 +18,7 @@
             <span class="glyphicon glyphicon-edit" data-toggle="tooltip" title="Currently on">
             </span>
         {% endif %}
-        <b><u><a href="{{URL_ROOT}}/exam/quizzes/view_module/{{module.id}}/{{course.id}}">{{module}}</u></b>
+        <b><u><a href="/exam/quizzes/view_module/{{module.id}}/{{course.id}}">{{module}}</u></b>
         </a>
         <ul class="list">
         {% for unit in module.get_learning_units %}
@@ -31,11 +31,11 @@
             </span>
         {% endif %}
         {% if unit.type == "quiz" %}
-            <a href="{{ URL_ROOT }}/exam/start/{{unit.quiz.questionpaper_set.get.id}}/{{module.id}}/{{course.id}}">
+            <a href="/exam/start/{{unit.quiz.questionpaper_set.get.id}}/{{module.id}}/{{course.id}}">
                 {{ unit.quiz.description }}
             </a>
         {% else %}
-            <a href="{{ URL_ROOT }}/exam/show_lesson/{{unit.lesson.id}}/{{module.id}}/{{course.id}}">
+            <a href="/exam/show_lesson/{{unit.lesson.id}}/{{module.id}}/{{course.id}}">
                 {{ unit.lesson.name }}
             </a>
         {% endif %}
@@ -103,12 +103,12 @@
 </div>
 <div style="text-align: center;">
     {% if first_unit %}
-        <a href="{{ URL_ROOT }}/exam/next_unit/{{course.id}}/{{learning_module.id}}/{{first_unit.id}}/1" class="btn btn-info">Start
+        <a href="/exam/next_unit/{{course.id}}/{{learning_module.id}}/{{first_unit.id}}/1" class="btn btn-info">Start
             <span class="glyphicon glyphicon-chevron-right">
             </span>
         </a>
     {% else %}
-        <a href="{{ URL_ROOT }}/exam/next_unit/{{course.id}}/{{learning_module.id}}" class="btn btn-info">Next
+        <a href="/exam/next_unit/{{course.id}}/{{learning_module.id}}" class="btn btn-info">Next
             <span class="glyphicon glyphicon-chevron-right">
             </span>
         </a>
@@ -136,7 +136,7 @@
     </div>
 {% endif %}
 <div style="text-align: center;">
-    <a href="{{ URL_ROOT }}/exam/next_unit/{{course.id}}/{{learning_module.id}}/{{current_unit.id}}" class="btn btn-info" style="display: inline-block;">Next
+    <a href="/exam/next_unit/{{course.id}}/{{learning_module.id}}/{{current_unit.id}}" class="btn btn-info" style="display: inline-block;">Next
         <span class="glyphicon glyphicon-chevron-right">
         </span>
     </a>

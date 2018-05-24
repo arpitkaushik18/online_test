@@ -41,14 +41,14 @@
             <ol class="list-group">
             {% for question in questionpaper.fixed_questions.all %}
              <li class="list-group">{{ question.summary }}
-              <a href="{{ URL_ROOT }}/exam/manage/regrade/questionpaper/{{ course.id }}/{{ question.id }}/{{ questionpaper.id }}/"
+              <a href="/exam/manage/regrade/questionpaper/{{ course.id }}/{{ question.id }}/{{ questionpaper.id }}/"
               class="btn btn-default btn-sm pull-right"><span class="glyphicon glyphicon-repeat"></span> Regrade </a>
              </li>
             {% endfor %}
             {% for random_set in questionpaper.random_questions.all %}
              {% for question in random_set.questions.all %}
               <li class="list-group"> {{ question.summary }}
-               <a href="{{ URL_ROOT }}/exam/manage/regrade/questionpaper/{{ course.id}}/{{ question.id }}/{{ questionpaper.id }}/"
+               <a href="/exam/manage/regrade/questionpaper/{{ course.id}}/{{ question.id }}/{{ questionpaper.id }}/"
                class="btn btn-default btn-sm pull-right"><span class="glyphicon glyphicon-repeat"></span> Regrade </a>
               </li>
              {% endfor %}
@@ -76,13 +76,13 @@
        {% for answerpaper in quiz.questionpaper_set.get.answerpaper_set.all %}
        <li class="list-group">
         Username: {{ answerpaper.user.username }}; Name: {{ answerpaper.user.get_full_name }}; Attempt Number: {{ answerpaper.attempt_number}}
-        <a href="{{ URL_ROOT }}/exam/manage/regrade/paper/{{ course.id }}/{{ answerpaper.id }}/"
+        <a href="/exam/manage/regrade/paper/{{ course.id }}/{{ answerpaper.id }}/"
         class="btn btn-default btn-sm pull-right"><span class="glyphicon glyphicon-repeat"></span> Regrade whole paper </a>
         </li>
          <ol class="list-group">
           {% for question in answerpaper.questions.all %}
            <li class="list-group"> {{ question.summary }}
-            <a href="{{ URL_ROOT }}/exam/manage/regrade/answerpaper/{{ course.id }}/{{ question.id }}/{{ answerpaper.id }}/"
+            <a href="/exam/manage/regrade/answerpaper/{{ course.id }}/{{ question.id }}/{{ answerpaper.id }}/"
             class="btn btn-default btn-sm pull-right"><span class="glyphicon glyphicon-repeat"></span> Regrade </a>
            </li>
           {% endfor %}
@@ -109,13 +109,13 @@
          <ol class="list-group">
          {% for answerpaper in user.answerpaper_set.all %}
          <li class="list-group"> Quiz: {{answerpaper.question_paper.quiz.description }}; Attempt Number: {{ answerpaper.attempt_number }}
-          <a href="{{ URL_ROOT }}/exam/manage/regrade/paper/{{ course.id }}/{{ answerpaper.id }}/"
+          <a href="/exam/manage/regrade/paper/{{ course.id }}/{{ answerpaper.id }}/"
           class="btn btn-default btn-sm pull-right" ><span class="glyphicon glyphicon-repeat"></span> Regrade whole paper </a>
          </li>
          <ol class="list-group">
              {% for question in answerpaper.questions.all %}
              <li class="list-group"> {{ question.summary }}
-             <a href="{{ URL_ROOT }}/exam/manage/regrade/answerpaper/{{ course.id }}/{{ question.id }}/{{ answerpaper.id }}/"
+             <a href="/exam/manage/regrade/answerpaper/{{ course.id }}/{{ question.id }}/{{ answerpaper.id }}/"
                  class="btn btn-default btn-sm pull-right"><span class="glyphicon glyphicon-repeat"></span> Regrade </a>
              </li>
              {% endfor %}

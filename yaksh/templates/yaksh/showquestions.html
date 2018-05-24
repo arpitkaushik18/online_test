@@ -5,9 +5,9 @@
 {% block pagetitle %} Questions {% endblock pagetitle %}
 
 {% block script %}
-<script src="{{ URL_ROOT }}/static/yaksh/js/show_question.js"></script>
-<script src="{{ URL_ROOT }}/static/yaksh/js/question_filter.js"></script>
-<script src="{{ URL_ROOT }}/static/yaksh/js/jquery.tablesorter.min.js"></script>
+<script src="/static/yaksh/js/show_question.js"></script>
+<script src="/static/yaksh/js/question_filter.js"></script>
+<script src="/static/yaksh/js/jquery.tablesorter.min.js"></script>
 {% endblock %}
 
 {% block content %}
@@ -21,7 +21,7 @@
 <div class="tab-content col-md-9 col-md-offset-2 main">
 <!-- Upload Questions -->
 <div id="updown" class="tab-pane fade">
-<a class="btn btn-primary" href="{{URL_ROOT}}/exam/manage/courses/download_yaml_template/"> Download Template</a>
+<a class="btn btn-primary" href="/exam/manage/courses/download_yaml_template/"> Download Template</a>
 <br/>
 <h4> Or </h4>
 <form action="" method="post"  enctype="multipart/form-data">
@@ -104,7 +104,7 @@ Upload File <span class="glyphicon glyphicon-open"/></button>
     </div>
      </div>
 <br><br>
-<button class="btn btn-primary" type="button" onClick='location.replace("{{URL_ROOT}}");'>
+<button class="btn btn-primary" type="button" onClick='location.replace("");'>
  Clear Filters</button>
 
 <div id="filtered-questions">
@@ -128,7 +128,7 @@ Upload File <span class="glyphicon glyphicon-open"/></button>
 <td>
 <input type="checkbox" name="question" value="{{ question.id }}">
 </td>
-<td><a href="{{URL_ROOT}}/exam/manage/addquestion/{{ question.id }}">{{question.summary|capfirst}}</a></td>
+<td><a href="/exam/manage/addquestion/{{ question.id }}">{{question.summary|capfirst}}</a></td>
 <td>{{question.language|capfirst}}</td>
 <td>{{question.type|capfirst}}</td>
 <td>{{question.points}}</td>
@@ -140,7 +140,7 @@ Upload File <span class="glyphicon glyphicon-open"/></button>
 </div>
 <br>
 <center>
-<button class="btn btn-primary" type="button" onclick='location.replace("{{URL_ROOT}}/exam/manage/addquestion/");'>Add Question <span class="glyphicon glyphicon-plus"></span></button>&nbsp;&nbsp;
+<button class="btn btn-primary" type="button" onclick='location.replace("/exam/manage/addquestion/");'>Add Question <span class="glyphicon glyphicon-plus"></span></button>&nbsp;&nbsp;
 {% if questions %}
 <button class="btn btn-primary" type="submit" name='download' value='download'>Download Selected <span class="glyphicon glyphicon-save"></span></button>&nbsp;&nbsp;
 <button class="btn btn-primary" type="submit" name="test" value="test">Test Selected</button>&nbsp;&nbsp;
