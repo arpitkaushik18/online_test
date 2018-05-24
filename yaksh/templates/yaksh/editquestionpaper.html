@@ -4,7 +4,7 @@
 {% block subtitle %}Questions in "{{ papers.quiz.description }}"{% endblock %}
 
 {% block script %}
-<script src="{{ URL_ROOT }}/static/yaksh/js/show_question.js"></script>
+<script src="/static/yaksh/js/show_question.js"></script>
 {% endblock %}
 
 {% block manage %}
@@ -12,13 +12,13 @@
 {% csrf_token %}
 <p><u> Fixed Questions </u></p>
 {% for q in fixed_questions %}
-<input type="checkbox" name="papers" value="{{ q.id }}">&nbsp;&nbsp;<a href="{{URL_ROOT}}/exam/manage/addquestion/{{ q.id }}">{{ q.summary}}</a><br>
+<input type="checkbox" name="papers" value="{{ q.id }}">&nbsp;&nbsp;<a href="/exam/manage/addquestion/{{ q.id }}">{{ q.summary}}</a><br>
 {% endfor %}
 <p><u> Random Questions </u></p>
 {% for random_set in random_questions %}
 <p>{{ random_set.num_questions}} question(s) from {{ random_set.questions.all|length }} question(s)</p>
 {% for q in random_set.questions.all %}
-<input type="checkbox" name="papers" value="{{ q.id }}">&nbsp;&nbsp;<a href="{{URL_ROOT}}/exam/manage/addquestion/{{ q.id }}">{{ q.summary}}</a><br>
+<input type="checkbox" name="papers" value="{{ q.id }}">&nbsp;&nbsp;<a href="/exam/manage/addquestion/{{ q.id }}">{{ q.summary}}</a><br>
 {% endfor %}
 {% endfor %}
 <br>
