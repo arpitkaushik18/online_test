@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block pagetitle %}<img src="{{ URL_ROOT }}/static/yaksh/images/yaksh_text.png" width="100" alt="YAKSH">
+{% block pagetitle %}<img src="/static/yaksh/images/yaksh_text.png" width="100" alt="YAKSH">
 </img>{% endblock %}
 
 {% block content %}
@@ -13,8 +13,8 @@
         {{ form.as_table }}
         </table></center>
         <button class="btn btn-primary" type="submit">Login</button>
-        <a class="btn btn-primary" href="{{URL_ROOT}}/exam/reset/forgotpassword/">Forgot Password?</a>
-        <a class="btn btn-primary" href="{{URL_ROOT}}/exam/register/">New User? Sign-Up </a>
+        <a class="btn btn-primary" href="/exam/reset/forgotpassword/">Forgot Password?</a>
+        <a class="btn btn-primary" href="/exam/register/">New User? Sign-Up </a>
         <h3> Login with </h3>
         <a class="btn btn-social-icon btn-google" href="{% url 'social:begin' 'google-oauth2' %}">
             <span class="fa fa-google" style="font-size:32px;color:red" ></span>
