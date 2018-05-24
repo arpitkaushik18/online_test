@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block pagetitle %}<img src="{{ URL_ROOT }}/static/yaksh/images/yaksh_text.png"
+{% block pagetitle %}<img src="/static/yaksh/images/yaksh_text.png"
 width="80" alt="YAKSH"></img>{% endblock %}
 {% block content %}
 {% csrf_token %}
@@ -35,18 +35,18 @@ width="80" alt="YAKSH"></img>{% endblock %}
     <br>
     {% if module_id and not user == "moderator" %}
         {% if first_unit %}
-            <a href="{{URL_ROOT}}/exam/next_unit/{{course_id}}/{{module_id}}/{{learning_unit.id}}/1" class="btn btn-info" id="Next"> Next
+            <a href="/exam/next_unit/{{course_id}}/{{module_id}}/{{learning_unit.id}}/1" class="btn btn-info" id="Next"> Next
                 <span class="glyphicon glyphicon-chevron-right">
                 </span>
             </a>
         {% else %}
-            <a href="{{URL_ROOT}}/exam/next_unit/{{course_id}}/{{module_id}}/{{learning_unit.id}}" class="btn btn-info" id="Next"> Next
+            <a href="/exam/next_unit/{{course_id}}/{{module_id}}/{{learning_unit.id}}" class="btn btn-info" id="Next"> Next
                 <span class="glyphicon glyphicon-chevron-right">
                 </span>
             </a>
         {% endif %}
     {% else %}
-        <a href="{{URL_ROOT}}/exam/" id="home" class="btn btn-success"> Home </a>
+        <a href="/exam/" id="home" class="btn btn-success"> Home </a>
     {% endif %}
     </center>
 {% endblock content %}
