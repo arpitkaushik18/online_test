@@ -8,8 +8,8 @@
 {% block content %}
 
 {% block script %}
-<script src="{{ URL_ROOT }}/static/yaksh/js/jquery.tablesorter.min.js"></script>
-<script src="{{ URL_ROOT }}/static/yaksh/js/mathjax/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script src="/static/yaksh/js/jquery.tablesorter.min.js"></script>
+<script src="/static/yaksh/js/mathjax/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 <script type="text/javascript">
 $(document).ready(function()
 {
@@ -33,7 +33,7 @@ $(document).ready(function()
     {% if course.get_quizzes %}
     <td>
     {% for quiz in course.get_quizzes %}
-     <li class="list-group-item"><a href = "{{URL_ROOT}}/exam/manage/gradeuser/{{quiz.id}}/{{course.id}}/">
+     <li class="list-group-item"><a href = "/exam/manage/gradeuser/{{quiz.id}}/{{course.id}}/">
      {{quiz.description}}
      </a></li>
     {% endfor %}
@@ -51,7 +51,7 @@ $(document).ready(function()
 {% if users %}
     <div id = "student" class="col-md-2">
     {% for user in users %}
-    <p><a href = "{{URL_ROOT}}/exam/manage/gradeuser/{{quiz_id}}/{{user.user__id}}/{{course_id}}/">
+    <p><a href = "/exam/manage/gradeuser/{{quiz_id}}/{{user.user__id}}/{{course_id}}/">
     {{user.user__first_name}} {{user.user__last_name}}</a></p>
     {% endfor %}
     </div>
@@ -62,7 +62,7 @@ $(document).ready(function()
 
 {% if has_quiz_assignments %}
 
-<a href="{{URL_ROOT}}/exam/manage/download/quiz_assignments/{{quiz_id}}/">
+<a href="/exam/manage/download/quiz_assignments/{{quiz_id}}/">
     Download All Assignments</a>
 {% endif %}
 
@@ -94,7 +94,7 @@ Attempt Number: <b>{{paper.attempt_number}} </b>
 <select id = "attempt" onchange="window.location.href=this.value">
 <option selected="">Select attempt number</option>
 {%for attempt in attempts %}
-<option value = "{{URL_ROOT}}/exam/manage/gradeuser/{{quiz_id}}/{{user_id}}/{{attempt.attempt_number}}/{{course_id}}/"> 
+<option value = "/exam/manage/gradeuser/{{quiz_id}}/{{user_id}}/{{attempt.attempt_number}}/{{course_id}}/"> 
 {{attempt.attempt_number}}
 </option>
 {% endfor %}
@@ -140,7 +140,7 @@ Status : <b style="color: red;"> Failed </b><br/>
 
 <h3> Answers </h3><br>
 <form name=frm id="q{{ paper.quiz.id }}_form"
-    action="{{URL_ROOT}}/exam/manage/gradeuser/{{quiz_id}}/{{user_id}}/{{paper.attempt_number}}/{{course_id}}/"
+    action="/exam/manage/gradeuser/{{quiz_id}}/{{user_id}}/{{paper.attempt_number}}/{{course_id}}/"
     method="post">
 {% csrf_token %}
 
@@ -194,7 +194,7 @@ Status : <b style="color: red;"> Failed </b><br/>
     <h5>Student answer: </h5>
     {% if question.type == "upload" %}
     {% if has_user_assignments %}
-        <a href="{{URL_ROOT}}/exam/manage/download/user_assignment/{{question.id}}/{{data.user.id}}/{{paper.question_paper.quiz.id}}">
+        <a href="/exam/manage/download/user_assignment/{{question.id}}/{{data.user.id}}/{{paper.question_paper.quiz.id}}">
         <div class="panel">
         Assignment File for {{ data.user.get_full_name.title }}
         </div>
