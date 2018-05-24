@@ -23,7 +23,7 @@
         {% for module in learning_modules %}
             <tr>
                 <td>
-                    <a href="{{URL_ROOT}}/exam/quizzes/view_module/{{module.id}}/{{course.id}}">
+                    <a href="/exam/quizzes/view_module/{{module.id}}/{{course.id}}">
                     {{module.name|title}}</a>
                 </td>
                 <td>
@@ -77,7 +77,7 @@
                             <td>
                             {% if unit.type == "quiz" %}
                                 {% if unit.quiz.view_answerpaper %}
-                                    <a href="{{ URL_ROOT }}/exam/view_answerpaper/{{ unit.quiz.questionpaper_set.get.id }}/{{course.id}}">
+                                    <a href="/exam/view_answerpaper/{{ unit.quiz.questionpaper_set.get.id }}/{{course.id}}">
                                     <i class="fa fa-eye" aria-hidden="true"></i> Can View </a>
                                 {% else %}
                                     <a>
