@@ -1,7 +1,7 @@
 {% extends template  %}
 {% block pagetitle %} Please fill in the following details {% endblock %}
 {% block main %}
-<form action="{{URL_ROOT}}/exam/editprofile/" method="post" >
+<form action="/exam/editprofile/" method="post" >
   {% csrf_token %}
   <center>
   <table class="table table-bordered">
