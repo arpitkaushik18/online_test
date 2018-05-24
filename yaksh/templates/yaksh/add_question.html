@@ -3,18 +3,18 @@
 {% block pagetitle %} Add Question {% endblock pagetitle %}
 
 {% block css %}
-<link rel="stylesheet" media="all" type="text/css" href="{{ URL_ROOT }}/static/yaksh/css/autotaggit.css" />
+<link rel="stylesheet" media="all" type="text/css" href="/static/yaksh/css/autotaggit.css" />
 {% endblock %}
 
 {% block script %}
-<script src="{{ URL_ROOT }}/static/yaksh/js/add_question.js"></script>
-<script src="{{ URL_ROOT }}/static/yaksh/js/mathjax/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script src="/static/yaksh/js/add_question.js"></script>
+<script src="/static/yaksh/js/mathjax/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 {% endblock %}
 
 {% block onload %} onload='javascript:textareaformat();' {% endblock %}
 
 {% block content %}
-<form action="{{ URL_ROOT }}/exam/manage/addquestion/{{ question.id }}/" method="post" name=frm onSubmit="return autosubmit();" enctype="multipart/form-data">
+<form action="/exam/manage/addquestion/{{ question.id }}/" method="post" name=frm onSubmit="return autosubmit();" enctype="multipart/form-data">
   {% csrf_token %}
   <center><table class="table">
   <tr><td>Summary: <td>{{ qform.summary }}{{ qform.summary.errors }}
@@ -68,7 +68,7 @@
   </select></p>
   <center>
     <button class="btn" type="submit" name="save_question">Save</button>
-    <button class="btn" type="button" name="button" onClick='location.replace("{{URL_ROOT}}/exam/manage/questions/");'>Back to Questions</button>
+    <button class="btn" type="button" name="button" onClick='location.replace("/exam/manage/questions/");'>Back to Questions</button>
     <button class="btn" type="submit" name="delete_files">Delete Selected Files</button>
   </center>
 </form>

@@ -3,12 +3,12 @@
 {% block subtitle %}Add Course{% endblock %}
 
 {% block css %}
-<link rel="stylesheet" href="{{ URL_ROOT }}/static/yaksh/css/question_quiz.css" type="text/css" />
-<link rel="stylesheet" href="{{ URL_ROOT }}/static/yaksh/css/jquery.datetimepicker.css" type="text/css" /> 
+<link rel="stylesheet" href="/static/yaksh/css/question_quiz.css" type="text/css" />
+<link rel="stylesheet" href="/static/yaksh/css/jquery.datetimepicker.css" type="text/css" /> 
 {% endblock %}
 
 {% block script %}
-<script src="{{ URL_ROOT }}/static/yaksh/js/jquery.datetimepicker.full.min.js"></script>
+<script src="/static/yaksh/js/jquery.datetimepicker.full.min.js"></script>
 {% endblock %}
 
 {% block content %}
@@ -26,6 +26,6 @@
   </center>
 
   <center><button class="btn primary" type="submit" id="submit" name="questionpaper">Save</button>
-  <button class="btn primary" type="button" name="button" onClick='location.replace("{{URL_ROOT}}/exam/manage/courses");'>Cancel</button> </center>
+  <button class="btn primary" type="button" name="button" onClick='location.replace("/exam/manage/courses");'>Cancel</button> </center>
 </form>
 {% endblock %}
