@@ -3,7 +3,7 @@
 {% block pagetitle %} Moderator's Dashboard {% endblock pagetitle %}
 
 {% block script %}
-<script language="JavaScript" type="text/javascript" src="{{ URL_ROOT }}/static/yaksh/js/moderator_dashboard.js"></script>
+<script language="JavaScript" type="text/javascript" src="/static/yaksh/js/moderator_dashboard.js"></script>
 {% endblock %}
 
 {% block content %}
@@ -15,7 +15,7 @@
     {% for course in courses %}
         <tr>
             <td>
-                <a href="{{URL_ROOT}}/exam/manage/course_detail/{{course.id}}">
+                <a href="/exam/manage/course_detail/{{course.id}}">
                 {{ course }}
                 </a>
             </td>
@@ -30,7 +30,7 @@
                   {% for quiz, users_no, passed, failed in course_details %}
                   <tr>
                     <td>
-                    <a href="{{URL_ROOT}}/exam/manage/monitor/{{ quiz.id }}/{{course.id}}">{{ quiz.description }}</a>
+                    <a href="/exam/manage/monitor/{{ quiz.id }}/{{course.id}}">{{ quiz.description }}</a>
                     </td>
                     <td>
                       {{users_no}} user(s)
@@ -54,10 +54,10 @@
 
 <hr>
 <center>
-    <a href="{{URL_ROOT}}/exam/manage/add_course" class="btn btn-default">
+    <a href="/exam/manage/add_course" class="btn btn-default">
       Add New Course
     </a>
-    <a href="{{URL_ROOT}}/exam/manage/create_demo_course" class="btn btn-default">
+    <a href="/exam/manage/create_demo_course" class="btn btn-default">
       Create Demo Course
     </a>
     <a data-toggle="collapse" data-target="#help">
@@ -88,7 +88,7 @@
    {% for paper in trial_paper %}
   <tr>
   <td> <input type = "checkbox" name="delete_paper" class="check" value = {{paper.id}}></input></td>
-  <td> <a href="{{URL_ROOT}}/exam/manage/gradeuser/{{paper.question_paper.quiz.id}}/{{paper.course.id}}/">{{paper.question_paper.quiz.description}}</a></td>
+  <td> <a href="/exam/manage/gradeuser/{{paper.question_paper.quiz.id}}/{{paper.course.id}}/">{{paper.question_paper.quiz.description}}</a></td>
   </tr>
   {% endfor %}
   </table>
