@@ -4,7 +4,7 @@
 {% block title %}Create/Edit Lesson{% endblock %}
 
 {% block script %}
-<script src="{{ URL_ROOT }}/static/yaksh/js/lesson.js"></script>
+<script src="/static/yaksh/js/lesson.js"></script>
 <script src="https://code.jquery.com/ui/1.9.1/jquery-ui.js"></script>
 {% endblock %}
 
@@ -49,9 +49,9 @@
     </button>
     {% endif %}
     {% if course_id %}
-    <button class="btn" type="button" name="button" onClick='location.replace("{{URL_ROOT}}/exam/manage/courses/");'>Cancel</button>
+    <button class="btn" type="button" name="button" onClick='location.replace("/exam/manage/courses/");'>Cancel</button>
     {% else %}
-    <button class="btn" type="button" name="button" onClick='location.replace("{{URL_ROOT}}/exam/manage/courses/all_lessons/");'>Cancel</button>
+    <button class="btn" type="button" name="button" onClick='location.replace("/exam/manage/courses/all_lessons/");'>Cancel</button>
     {% endif %}
     </form>
     <button class="btn" type="button" name="button" id="preview">Preview Lesson Description
