@@ -55,7 +55,6 @@ def check_code(pid, job_queue, results):
         result = grader.evaluate(data)
         results[uid] = dict(status='done', result=json.dumps(result))
 
-
 ###############################################################################
 # `ServerPool` class.
 ###############################################################################
@@ -237,6 +236,7 @@ def get_result(url, uid, block=False):
         while data.get('status') != 'done':
             time.sleep(0.1)
             data = _get_data()
+
 
     return data
 

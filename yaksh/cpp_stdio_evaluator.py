@@ -32,13 +32,15 @@ class CppStdIOEvaluator(StdIOEvaluator):
     def set_file_paths(self):
         user_output_path = os.getcwd() + '/output_file'
         ref_output_path = os.getcwd() + '/executable'
-        return user_output_path, ref_output_path
+        print(user_output_path,ref_output_path)
+        return user_output_path,ref_output_path
 
     def get_commands(self, user_output_path, ref_output_path):
         compile_command = 'g++  {0} -c -o {1}'.format(self.submit_code_path,
                                                       user_output_path)
         compile_main = 'g++ {0} -o {1}'.format(user_output_path,
                                                ref_output_path)
+        print(compile_command,compile_main)
         return compile_command, compile_main
 
     def compile_code(self):
@@ -66,6 +68,8 @@ class CppStdIOEvaluator(StdIOEvaluator):
                                                     stdout=subprocess.PIPE,
                                                     stderr=subprocess.PIPE
                                                     )
+        print(self.compiled_user_answer, self.compiled_test_code
+)
         return self.compiled_user_answer, self.compiled_test_code
 
     def check_code(self):
@@ -114,4 +118,5 @@ class CppStdIOEvaluator(StdIOEvaluator):
             except:
                 err = err + "\n" + stdnt_stderr
         mark_fraction = 1.0 if self.partial_grading and success else 0.0
+        print(success, err, mark_fraction)
         return success, err, mark_fraction
