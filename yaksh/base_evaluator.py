@@ -11,7 +11,7 @@ import signal
 
 
 # Local imports
-#from .grader import MY_DIR, TimeoutExcept
+from .grader import MY_DIR, TimeoutException
 
 class BaseEvaluator(object):
     """Base Evaluator class containing generic attributes and callable methods"""

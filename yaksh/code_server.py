@@ -236,8 +236,6 @@ def get_result(url, uid, block=False):
         while data.get('status') != 'done':
             time.sleep(0.1)
             data = _get_data()
-
-
     return data
 
 

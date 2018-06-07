@@ -90,12 +90,10 @@ class Grader(object):
         """
         self.setup()
         test_case_instances = self.get_evaluator_objects(kwargs)
-        print(test_case_instances)
         with change_dir(self.in_dir):
             success, error, weight = self.safe_evaluate(test_case_instances)
         self.teardown()
         result = {'success': success, 'error': error, 'weight': weight}
-        print(result)
         return result
 
     # Private Protocol ##########
@@ -112,7 +110,6 @@ class Grader(object):
         for test_case in test_case_data:
             test_case_instance = create_evaluator_instance(metadata, test_case)
             test_case_instances.append(test_case_instance)
-        print(test_case_instances)
         return test_case_instances
 
     def safe_evaluate(self, test_case_instances):

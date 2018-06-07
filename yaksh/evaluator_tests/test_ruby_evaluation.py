@@ -7,11 +7,12 @@ from textwrap import dedent
 from psutil import Process
 
 from yaksh.grader import Grader
-from yaksh.rb_stdio_evaluator import RbStdIOEvaluator
+from yaksh.ruby_stdio_evaluator import RubyStdIOEvaluator
 from yaksh.evaluator_tests.test_python_evaluation import EvaluatorBaseTest
 from yaksh.settings import SERVER_TIMEOUT
 
-class RbStdIOEvaluationTestCases(EvaluatorBaseTest):
+
+class RubyStdIOEvaluationTestCases(EvaluatorBaseTest):
     def setUp(self):
         self.test_case_data = [{'expected_output': '11',
                                 'expected_input': '5\n6',
@@ -34,7 +35,6 @@ class RbStdIOEvaluationTestCases(EvaluatorBaseTest):
         val2 = gets
         print (val1.to_i + val2.to_i)
         """)
-        print(user_answer)
         kwargs = {
                   'metadata': {
                     'user_answer': user_answer,
@@ -43,7 +43,7 @@ class RbStdIOEvaluationTestCases(EvaluatorBaseTest):
                     'language': 'ruby'
                     },
                     'test_case_data': self.test_case_data,
-                  }
+                 }
 
         # When
         grader = Grader(self.in_dir)
@@ -90,7 +90,6 @@ class RbStdIOEvaluationTestCases(EvaluatorBaseTest):
           break if m==0
          end
         """)
-        print("CODER<><><><><><><", user_answer, "\n", repr(user_answer))
         timeout_msg = ("Code took more than {0} seconds to run. "
                        "You probably have an infinite loop in"
                        " your code.").format(SERVER_TIMEOUT)
@@ -139,7 +138,6 @@ class RbStdIOEvaluationTestCases(EvaluatorBaseTest):
         self.assertFalse(result.get("success"))
         self.assert_correct_output("Compilation Error", result.get("error"))
 
-
     def test_only_stdout(self):
         # Given
         self.test_case_data = [{'expected_output': '11',
@@ -165,7 +163,9 @@ class RbStdIOEvaluationTestCases(EvaluatorBaseTest):
 
         # Then
         self.assertTrue(result.get('success'))
-    def test_array_input(self):
+
+
+def test_array_input(self):
         # Given
         self.test_case_data = [{'expected_output': '561',
                                 'expected_input': '5\n6\n1',
@@ -199,7 +199,8 @@ class RbStdIOEvaluationTestCases(EvaluatorBaseTest):
         # Then
         self.assertTrue(result.get('success'))
 
-    def test_rb_string_input(self):
+
+def test_rb_string_input(self):
         # Given
         self.test_case_data = [{'expected_output': 'abc',
                                 'expected_input': 'abc',
@@ -211,7 +212,6 @@ class RbStdIOEvaluationTestCases(EvaluatorBaseTest):
         for i in 0..2;
         print(a[i]);
         end
-        
         """)
         kwargs = {
                   'metadata': {
