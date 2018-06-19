@@ -32,7 +32,7 @@ class CppStdIOEvaluator(StdIOEvaluator):
     def set_file_paths(self):
         user_output_path = os.getcwd() + '/output_file'
         ref_output_path = os.getcwd() + '/executable'
-        return user_output_path,ref_output_path
+        return user_output_path, ref_output_path
 
     def get_commands(self, user_output_path, ref_output_path):
         compile_command = 'g++  {0} -c -o {1}'.format(self.submit_code_path,

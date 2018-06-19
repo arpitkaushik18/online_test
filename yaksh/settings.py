@@ -48,5 +48,8 @@ code_evaluators = {
     "scilab": {"standardtestcase": "yaksh.scilab_code_evaluator.ScilabCodeEvaluator",
                "hooktestcase": "yaksh.hook_evaluator.HookEvaluator"
                },
-    "ruby":{"stdiobasedtestcase":"yaksh.ruby_stdio_evaluator.RubyStdIOEvaluator"}
+    "ruby":{"stdiobasedtestcase":"yaksh.ruby_stdio_evaluator.RubyStdIOEvaluator",
+            "standardtestcase": "yaksh.ruby_assertion_evaluator.rubyCodeEvaluator"
+            },
+    "R":{"stdiobasedtestcase":"yaksh.R_stdio_evaluator.RStdIOEvaluator"}
 }

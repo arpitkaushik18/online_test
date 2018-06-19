@@ -26,8 +26,8 @@ def redirect_stdout():
         sys.stdout = old_target 
 
 
-class RubyStdIOEvaluator(StdIOEvaluator):
-    """Evaluates Ruby StdIO based code"""
+class RStdIOEvaluator(StdIOEvaluator):
+    """Evaluates R StdIO based code"""
     def __init__(self, metadata, test_case_data):
         self.files = []
 
@@ -49,7 +49,7 @@ class RubyStdIOEvaluator(StdIOEvaluator):
 
 
     def compile_code(self):
-        self.submit_code_path=self.create_submit_code_file('submit.rb')
+        self.submit_code_path=self.create_submit_code_file('submit.R')
         self.write_to_submit_code_file(self.submit_code_path, self.user_answer)
 
         if self.expected_input:
@@ -60,14 +60,13 @@ class RubyStdIOEvaluator(StdIOEvaluator):
             sys.stdin = input_buffer
 
         with redirect_stdout() as output_buffer:
-            self.proc=subprocess.Popen('ruby {0}'.format(self.submit_code_path),
+            self.proc=subprocess.Popen('R {0}'.format(self.submit_code_path),
                                         shell=True,
                                         stdin=subprocess.PIPE,
                                         stdout=subprocess.PIPE,
                                         stderr=subprocess.PIPE,
                                         preexec_fn=os.setpgrp
                                         )
-        print(self.proc,"LL::LL:::L:::")
 
     def check_code(self):
         success=False

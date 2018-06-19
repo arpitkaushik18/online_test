@@ -382,6 +382,7 @@ class CppStdIOEvaluationTestCases(EvaluatorBaseTest):
 
         # Then
         self.assertFalse(result.get("success"))
+        print(result.get("error"),"<<<<<<<<<>>>>>>>>>>>>>>>")
         self.assert_correct_output("Compilation Error", result.get("error"))
 
     def test_infinite_loop(self):
